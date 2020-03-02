@@ -2,6 +2,7 @@
 .namebar {
 	padding-left: 20rpx;
 	background-color: #4752b3;
+	height: 240rpx;
 }
 
 .namebar > .content {
@@ -9,6 +10,7 @@
 	font-weight: 300;
 	line-height: 29px;
 	color: #ffffff;
+	padding-top: 130rpx;
 }
 
 .namebar > .desc {
