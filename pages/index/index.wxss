@@ -1,4 +1,7 @@
 /* pages/index/index.wxss */
+page {
+	background-color: #ffffff;
+}
 .index-hd {
 	padding-top: 380rpx;
 	padding-bottom: 10rpx;
