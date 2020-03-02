@@ -1,0 +1,52 @@
+ <view class="namebar">
+        <view class="content">订阅搜索🔍</view>
+        <view class="desc">即刻订阅你想搜索的内容</view>
+ </view>
+ <view class="search-bar">
+       <mp-searchbar bindselectresult="selectResult" placeholder="创建你的搜索订阅吧" search="{{search}}" borderColor="#4752b3" ext-class="{{searchbarstyle}}" searchbarText="创建你的搜索订阅吧">    </mp-searchbar>
+</view>
+<view class="section">
+      <view class="options">
+              <text>这将为您创建订阅</text>
+      </view>
+      <view id="create-subcribe-options">
+             <!-- 频率： -->
+              <picker bindchange="bindPickerChange" value="{{frequent}}" range="{{frequent}}">
+                    <view class="picker">频率：{{frequent[index]}}</view>
+              </picker>
+              <!-- 来源： -->
+              <picker bindchange="bindPickerChange" value="{{from}}" range="{{from}}">
+                    <view class="picker">来源：{{from[index]}}</view>
+              </picker>
+              <!-- 数量： -->
+              <picker bindchange="bindPickerChange" value="{{amount}}" range="{{amount}}">
+                    <view class="picker">数量：{{amount[index]}}</view>
+              </picker>
+              <!-- 语言： -->
+              <picker bindchange="bindPickerChange" value="{{language}}" range="{{language}}">
+                    <view class="picker">语言：{{language[languageIndex]}}</view>
+              </picker>
+              <!-- 订阅模式： -->
+              <picker bindchange="bindPickerChange" value="{{subscribeMode}}" range="{{subscribeMode}}">
+                    <view class="picker">订阅模式：{{subscribeMode[index]}}</view>
+              </picker>
+       </view>
+
+         
+      <view class="creatButton">
+            <button type="primary"  id="create_subcribe">创建订阅</button>       
+             <button id="save_subcribe" style="display:none">保存订阅</button>
+             <!-- 这个button 需要修改       -->
+             <button class="show_options">隐藏选项</button>     
+             <button id="hide_options" style="display:none">显示选项</button>       
+      </view>
+</view>
+<view class="page-content">
+       <view class="content-list">
+              <block wx:for-items="{{contentlist}}" wx:key="{{item.id}}">
+                     <view class="content-list-item">
+                            <view class="content-list-item-news"><view class="content-list-text">{{item.name}}</view></view>
+                     </view>
+              </block>
+       </view>
+</view>

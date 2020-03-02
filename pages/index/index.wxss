@@ -1,11 +1,9 @@
 /* pages/index/index.wxss */
-swiper{
-  height: 260rpx;
+.index-hd {
+	padding-top: 380rpx;
+	padding-bottom: 10rpx;
+	text-align: center;
 }
-swiper-item{
-  
-}
-swiper image{
-  display: flex;
-  width:100vw;
+.logo {
+	width: 300rpx;
 }

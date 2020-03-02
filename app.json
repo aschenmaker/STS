@@ -1,5 +1,5 @@
 {
-	"pages": [ "pages/index/index", "pages/find/index", "pages/about/index" ],
+	"pages": [ "pages/index/index", "pages/find/index", "pages/about/index", "pages/index/search/search" ],
 	"window": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",

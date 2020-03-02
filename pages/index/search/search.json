@@ -1,0 +1,7 @@
+{
+	"navigationBarBackgroundColor": "#4752b3",
+	"navigationBarTitleText": "开始搜索",
+	"usingComponents": {
+		"mp-searchbar": "../../component/searchbar/searchbar"
+	}
+}

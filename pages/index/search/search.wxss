@@ -1,0 +1,33 @@
+/* pages/index/search/search.wxss */
+.namebar {
+	padding-left: 20rpx;
+	background-color: #4752b3;
+}
+
+.namebar > .content {
+	font-size: 30px;
+	font-weight: 300;
+	line-height: 29px;
+	color: #ffffff;
+}
+
+.namebar > .desc {
+	font-size: 13px;
+	line-height: 31px;
+	color: rgba(255, 255, 255, 0.54);
+}
+
+.content-list-item {
+	margin: 20rpx 0;
+	background-color: #ffffff;
+	border-radius: 4rpx;
+	overflow: hidden;
+}
+
+.content-list-item-news {
+	padding: 30rpx;
+	display: flex;
+	align-items: center;
+
+	transition: opacity .3s;
+}
