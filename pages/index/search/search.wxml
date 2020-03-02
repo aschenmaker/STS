@@ -7,9 +7,9 @@
 </view>
 <view class="section">
       <view class="options">
-              <text>这将为您创建订阅</text>
+       <text>这将为您创建订阅</text>
       </view>
-      <view id="create-subcribe-options">
+      <view class="create-subcribe-options {{optionsIsShow?'options-show':''}}">
              <!-- 频率： -->
               <picker bindchange="bindPickerChange" value="{{frequent}}" range="{{frequent}}">
                     <view class="picker">频率：{{frequent[index]}}</view>
@@ -37,8 +37,9 @@
             <button type="primary"  id="create_subcribe">创建订阅</button>       
              <button id="save_subcribe" style="display:none">保存订阅</button>
              <!-- 这个button 需要修改       -->
-             <button class="show_options">隐藏选项</button>     
-             <button id="hide_options" style="display:none">显示选项</button>       
+             <button id="hide_options" style="display:none" bindtap="">显示选项</button>       
+             <button class="show_options" bindtap="">隐藏选项</button>     
+             
       </view>
 </view>
 <view class="page-content">

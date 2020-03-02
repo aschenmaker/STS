@@ -16,6 +16,26 @@
 	line-height: 31px;
 	color: rgba(255, 255, 255, 0.54);
 }
+.search-bar {
+	box-shadow: 0 5px 8px rgba(0, 0, 0, .28);
+}
+.options > text {
+	font-size: 12px;
+}
+.create-subcribe-options {
+	transition: opacity .3s;
+}
+.options-show {
+	opacity: .2;
+}
+
+.create-subcribe-options {
+	height: 0;
+	overflow: hidden;
+}
+.options-show {
+	height: auto;
+}
 
 .content-list-item {
 	margin: 20rpx 0;

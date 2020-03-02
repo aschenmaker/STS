@@ -4,6 +4,7 @@ Page({
    * 页面的初始数据
    */
 	data: {
+		optionsIsShow: false,
 		searchbarstyle: 'searchbarstyle',
 		contentlist: [
 			{ id: 1, name: '搜索结果' },
