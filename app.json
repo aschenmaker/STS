@@ -1,25 +1,34 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "index"
-    },
-    {
-      "pagePath": "pages/logs/logs",
-      "text": "logs"
-    }
-    ]
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+	"pages": [ "pages/index/index", "pages/find/index", "pages/about/index" ],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "订阅搜索",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#bfbfbf",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "主页",
+				"iconPath": "/asset/img/home.png",
+				"selectedIconPath": "/asset/img/homeSelected.png"
+			},
+			{
+				"pagePath": "pages/find/index",
+				"text": "订阅",
+				"iconPath": "/asset/img/sub.png",
+				"selectedIconPath": "/asset/img/subSeleted.png"
+			},
+			{
+				"pagePath": "pages/about/index",
+				"text": "我",
+				"iconPath": "/asset/img/mine.png",
+				"selectedIconPath": "/asset/img/mineSelected.png"
+			}
+		]
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json"
 }
