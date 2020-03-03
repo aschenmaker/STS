@@ -1,0 +1,14 @@
+<view class="user-block">
+    <view class="user-avatar"> 头像</view>
+    <view class="user-id"> disconnect</view>
+    <view class="subscribe-info">已经订阅了 X 个内容</view>
+</view>
+<view class="setting-list">
+    <view class="manage-sub">管理订阅</view>
+    <view class="logs">日志</view>
+    <view class="review">意见反馈</view>
+    <view class="about">关于</view>
+</view>
+<view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__text">Copyright © 2020 zjj cqs</view>
+</view>

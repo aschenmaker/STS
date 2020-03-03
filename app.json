@@ -1,5 +1,5 @@
 {
-	"pages": [ "pages/index/index", "pages/find/index", "pages/about/index", "pages/index/search/search" ],
+	"pages": [ "pages/index/index", "pages/find/index", "pages/mine/index", "pages/index/search/search" ],
 	"window": {
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
@@ -22,7 +22,7 @@
 				"selectedIconPath": "/asset/img/subSeleted.png"
 			},
 			{
-				"pagePath": "pages/about/index",
+				"pagePath": "pages/mine/index",
 				"text": "我",
 				"iconPath": "/asset/img/mine.png",
 				"selectedIconPath": "/asset/img/mineSelected.png"

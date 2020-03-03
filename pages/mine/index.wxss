@@ -1,0 +1,11 @@
+/* pages/about/index.wxss */
+.user-block {
+	background-color: green;
+	height: 400rpx;
+}
+.user-avatar {
+	height: 81px;
+	width: 81px;
+	background-color: aliceblue;
+	text-align: center;
+}
