@@ -17,17 +17,83 @@ Page({
 			{ id: 3, name: '搜索结果' }
 		],
 		frequent: [ '有内容更新时', '每天最多一次', '每周最多一次' ],
-		index: 0,
+		frequentIndex: 0,
 		from: [ '自动', '博客', '新闻', '在线文章', '视频', '读书' ],
+		fromIndex: 0,
 		amount: [ '仅最佳结果', '所有结果' ],
+		amountIndex: 0,
 		language: [ '任何语言', '中文', '英语' ],
 		languageIndex: 1,
-		subscribeMode: [ '仅在应用内使用', '发送到个人邮件{user.mail}', '微信小程序提醒' ]
+		subscribeMode: [ '仅在应用内使用', '发送到您的邮箱', '微信小程序提醒' ],
+		subscribeModeIndex: 0,
+
+		options: {
+			frequentIndex: 0,
+			fromIndex: 0,
+			amountIndex: 0,
+			languageIndex: 1,
+			subscribeModeIndex: 0
+		}
 	},
-	showOptions: function(e) {
-		console.log(e);
+	showOptions: function() {
+		var IsShow = !this.data.optionsIsShow;
+		this.setData({
+			optionsIsShow: IsShow
+		});
 	},
 
+	// picker的设置
+	bindPickerChangeF: function(e) {
+		console.log('picker发送选择改变，携带值为', e.detail.value);
+		this.setData({
+			frequentIndex: e.detail.value
+		});
+	},
+	bindPickerChangeC: function(e) {
+		console.log('picker发送选择改变，携带值为', e.detail.value);
+		this.setData({
+			fromIndex: e.detail.value
+		});
+	},
+	bindPickerChangeA: function(e) {
+		console.log('picker发送选择改变，携带值为', e.detail.value);
+		this.setData({
+			amountIndex: e.detail.value
+		});
+	},
+	bindPickerChangeL: function(e) {
+		console.log('picker发送选择改变，携带值为', e.detail.value);
+		this.setData({
+			languageIndex: e.detail.value
+		});
+	},
+	bindPickerChangeS: function(e) {
+		console.log('picker发送选择改变，携带值为', e.detail.value);
+		this.setData({
+			subscribeModeIndex: e.detail.value
+		});
+	},
+	createSubscibe: function() {
+		var settings = this.data.options;
+		console.log(this.data.options);
+		settings.frequentIndex = this.data.frequentIndex;
+		settings.amountIndex = this.data.amountIndex;
+		settings.fromIndex = this.data.fromIndex;
+		settings.languageIndex = this.data.languageIndex;
+		settings.subscribeModeIndex = this.data.subscribeModeIndex;
+		this.setData(
+			{
+				options: settings
+			},
+			() => {
+				console.log(this.data.options);
+			}
+		);
+		// fromIndex: 0,
+		// 	amountIndex: 0,
+		// 	languageIndex: 1,
+		// 	subscribeModeIndex: 0
+	},
 	/**
    * 生命周期函数--监听页面加载
    */

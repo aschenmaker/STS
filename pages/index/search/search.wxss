@@ -3,8 +3,11 @@
 	position: fixed;
 	top: 0;
 	width: 100vw;
+	z-index: 1;
 }
-
+.hide {
+	display: none;
+}
 .namebar {
 	padding-left: 20rpx;
 	background-color: #4752b3;
@@ -37,6 +40,39 @@
 	font-size: 12px;
 	line-height: 18px;
 	color: #404040;
+}
+
+.create-subcribe-options {
+	padding: 0 10px;
+}
+
+.picker-view {
+	padding-top: 7px;
+	padding-bottom: 7px;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: baseline;
+}
+
+.textPicker {
+	font-size: 13px;
+	align-items: center;
+	width: 30%;
+	color: #737373;
+}
+
+picker {
+	line-height: 27px;
+	padding: 0 18px 0 6px;
+	border-radius: 2px;
+	text-align: left;
+	background-color: #f5f5f5;
+	border: 1px solid #dcdcdc;
+	width: 50vw;
+	justify-items: center;
+	font-size: 12px;
+	color: #444444;
 }
 
 .creatButton {
@@ -77,9 +113,6 @@
 
 .create-subcribe-options {
 	transition: opacity .3s;
-}
-.options-show {
-	opacity: .2;
 }
 
 .create-subcribe-options {

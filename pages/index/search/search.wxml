@@ -1,6 +1,6 @@
 <view class="main">
        <view class="namebar">
-        <view class="content">订阅搜索🔍</view>
+        <view class="content">🔍订阅搜索</view>
         <view class="desc">即刻订阅你想搜索的内容</view>
  </view>
  <view class="search-bar">
@@ -8,43 +8,63 @@
 </view>
 <view class="section">
       <view class="options">
-       <text>这将为您创建订阅</text>
+       <text class=" {{optionsIsShow?'hide':''}}" >这将为您创建订阅</text>
       </view>
       <view class="create-subcribe-options {{optionsIsShow?'options-show':''}}">
              <!-- 频率： -->
-              <picker bindchange="bindPickerChange" value="{{frequent}}" range="{{frequent}}">
-                    <view class="picker">频率：{{frequent[index]}}</view>
+             <view class="picker-view">
+                    <text class="textPicker">频率</text>
+              <picker bindchange="bindPickerChangeF" value="{{frequentIndex}}" range="{{frequent}}">           
+                    <view class="picker">{{frequent[frequentIndex]}}</view>
               </picker>
+             </view>
+             
               <!-- 来源： -->
-              <picker bindchange="bindPickerChange" value="{{from}}" range="{{from}}">
-                    <view class="picker">来源：{{from[index]}}</view>
+                <view class="picker-view">
+                        <text class="textPicker">来源</text>
+              <picker bindchange="bindPickerChangeC" value="{{fromIndex}}" range="{{from}}">
+                    <view class="picker">{{from[fromIndex]}}</view>
               </picker>
+                </view>
+             
               <!-- 数量： -->
-              <picker bindchange="bindPickerChange" value="{{amount}}" range="{{amount}}">
-                    <view class="picker">数量：{{amount[index]}}</view>
-              </picker>
+                <view class="picker-view">
+                      <text class="textPicker">数量</text>
+                      <picker bindchange="bindPickerChangeA" value="{{amountIndex}}" range="{{amount}}">
+                    <view class="picker">{{amount[amountIndex]}}</view>
+                   </picker>
+                </view>
+       
               <!-- 语言： -->
-              <picker bindchange="bindPickerChange" value="{{language}}" range="{{language}}">
-                    <view class="picker">语言：{{language[languageIndex]}}</view>
-              </picker>
+                <view class="picker-view">
+                       <text class="textPicker">语言</text>
+                      <picker bindchange="bindPickerChangeL" value="{{languageIndex}}" range="{{language}}">
+                    <view class="picker">{{language[languageIndex]}}</view>
+                  </picker>
+                </view>
+              
               <!-- 订阅模式： -->
-              <picker bindchange="bindPickerChange" value="{{subscribeMode}}" range="{{subscribeMode}}">
-                    <view class="picker">订阅模式：{{subscribeMode[index]}}</view>
+                <view class="picker-view">
+                         <text class="textPicker">订阅模式</text>
+              <picker bindchange="bindPickerChangeS" value="{{subscribeModeIndex}}" range="{{subscribeMode}}">
+                    <view class="picker">{{subscribeMode[subscribeModeIndex]}}</view>
               </picker>
+                </view>
+            
        </view>
 
          
       <view class="creatButton">
-            <button class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" >创建订阅</button>
+            <button class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" bindtap="createSubscibe" >创建订阅</button>
             <button class="weui-btn subbutton"  size="mini" id="save_subcribe" style="display:none">更新订阅</button>
-            <button class="showbutton" id="show_options" bindtap="showOptions" >显示选项 ▼</button>
-            <button class="showbutton" id="hide_options" style="display:none" >隐藏选项 ▲</button>
+            <button class="showbutton {{optionsIsShow?'hide':''}}" id="show_options" bindtap="showOptions" >显示选项 ▼</button>
+            <button class="showbutton {{optionsIsShow?'':'hide'}}" id="hide_options" bindtap="showOptions">隐藏选项 ▲</button>
       </view>
 </view>
 </view>
 <view class="page-content">
        <view class="content-list">
-              <block wx:for-items="{{contentlist}}" wx:key="{{item.id}}">
+              <block wx:for-items="{{contentlist}}" wx:key="id">
                      <view class="content-list-item">
                             <view class="content-list-item-news"><view class="content-list-text">{{item.name}}</view></view>
                      </view>
