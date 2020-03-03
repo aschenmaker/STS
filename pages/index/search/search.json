@@ -1,7 +1,6 @@
 {
 	"navigationBarBackgroundColor": "#4752b3",
 	"navigationBarTitleText": "  ",
-	"navigationStyle": "custom",
 	"usingComponents": {
 		"mp-searchbar": "../../component/searchbar/searchbar"
 	}

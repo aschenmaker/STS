@@ -1,4 +1,5 @@
- <view class="namebar">
+<view class="main">
+       <view class="namebar">
         <view class="content">订阅搜索🔍</view>
         <view class="desc">即刻订阅你想搜索的内容</view>
  </view>
@@ -34,13 +35,12 @@
 
          
       <view class="creatButton">
-            <button type="primary"  id="create_subcribe">创建订阅</button>       
-             <button id="save_subcribe" style="display:none">保存订阅</button>
-             <!-- 这个button 需要修改       -->
-             <button id="hide_options"  bindtap="">显示选项</button>       
-             <button class="show_options" style="display:none" bindtap="">隐藏选项</button>     
-             
+            <button class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" >创建订阅</button>
+            <button class="weui-btn subbutton"  size="mini" id="save_subcribe" style="display:none">更新订阅</button>
+            <button class="showbutton" id="show_options" bindtap="showOptions" >显示选项 ▼</button>
+            <button class="showbutton" id="hide_options" style="display:none" >隐藏选项 ▲</button>
       </view>
+</view>
 </view>
 <view class="page-content">
        <view class="content-list">

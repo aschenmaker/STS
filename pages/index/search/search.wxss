@@ -1,8 +1,13 @@
 /* pages/index/search/search.wxss */
+.main {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+}
+
 .namebar {
 	padding-left: 20rpx;
 	background-color: #4752b3;
-	height: 240rpx;
 }
 
 .namebar > .content {
@@ -10,7 +15,6 @@
 	font-weight: 300;
 	line-height: 29px;
 	color: #ffffff;
-	padding-top: 130rpx;
 }
 
 .namebar > .desc {
@@ -23,6 +27,7 @@
 }
 .section {
 	margin: 0;
+	background-color: #ffffff;
 	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
 }
 .options {
@@ -33,6 +38,43 @@
 	line-height: 18px;
 	color: #404040;
 }
+
+.creatButton {
+	padding: 10px 10px 16px 10px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.subbutton {
+	font-size: 11px;
+	font-weight: bold;
+	margin-right: 16px;
+	color: #fff;
+	background-color: #4d90fe;
+	padding: 8px 20px;
+	border-radius: 2px;
+	margin-left: 0;
+}
+
+.subbutton_hover {
+	background-color: #357ae8;
+}
+
+.showbutton {
+	font-size: 12px;
+	font-weight: 400;
+	color: #427fed;
+	background-color: #fff;
+	margin-left: 0;
+	padding: 0;
+}
+
+.showbutton::after {
+	border: 0;
+}
+
 .create-subcribe-options {
 	transition: opacity .3s;
 }
@@ -53,6 +95,10 @@
 	background-color: #ffffff;
 	border-radius: 4rpx;
 	overflow: hidden;
+}
+
+.page-content {
+	padding-top: 400rpx;
 }
 
 .content-list-item-news {

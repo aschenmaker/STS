@@ -24,6 +24,9 @@ Page({
 		languageIndex: 1,
 		subscribeMode: [ '仅在应用内使用', '发送到个人邮件{user.mail}', '微信小程序提醒' ]
 	},
+	showOptions: function(e) {
+		console.log(e);
+	},
 
 	/**
    * 生命周期函数--监听页面加载

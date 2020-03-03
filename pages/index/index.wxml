@@ -5,6 +5,6 @@
     <image src="../../asset/img/logo.png" mode="widthFix" class="logo"></image>
   </view>
   <view class="search">
-    <button type="primary" bindtap="naviToSearch">点击开始搜索</button>
+    <button class="weui-btn" type="primary" bindtap="naviToSearch">点击开始搜索</button>
   </view>
 </view>
