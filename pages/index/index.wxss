@@ -3,10 +3,52 @@ page {
 	background-color: #ffffff;
 }
 .index-hd {
-	padding-top: 380rpx;
-	padding-bottom: 10rpx;
+	padding-top: 280rpx;
+	padding-bottom: 20rpx;
 	text-align: center;
 }
 .logo {
 	width: 300rpx;
+}
+
+.search-back {
+	padding: 8px;
+	position: relative;
+	display: flex;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	align-items: center;
+	justify-content: center;
+	-webkit-text-size-adjust: 100%;
+}
+
+.searchbox {
+	width: 65%;
+	position: relative;
+	border-radius: 5px;
+	background-color: #ffffff;
+	border: 1px solid #dfe1e5;
+	/* box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, .28); */
+}
+.search {
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	border-radius: 24px;
+	text-align: left;
+	color: rgba(0, 0, 0, 0.5);
+	background-color: #ffffff;
+	line-height: 32px;
+}
+.weui-icon-search {
+	margin: .64em 8px 0 10px;
+	font-size: 14px;
+	vertical-align: text-bottom;
+	height: 1em;
+	line-height: 1em;
+}
+.searchbartext {
+	font-size: 13px;
+	display: inline-block;
 }

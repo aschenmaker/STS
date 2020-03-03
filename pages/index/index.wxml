@@ -4,7 +4,12 @@
   <view class="index-hd">
     <image src="../../asset/img/logo.png" mode="widthFix" class="logo"></image>
   </view>
-  <view class="search">
-    <button class="weui-btn" type="primary" bindtap="naviToSearch">点击开始搜索</button>
+  <view class="search-back">
+      <view class="searchbox">
+        <view class="search" bindtap="naviToSearch">
+          <icon class="weui-icon-search" type="search" size="12"></icon>
+          <view class="searchbartext">请输入你要搜索的关键词</view>  
+      </view>
+    </view>
   </view>
 </view>
