@@ -1,11 +1,24 @@
 /* pages/about/index.wxss */
+.page {
+	background-color: #f3f3f3;
+}
 .user-block {
-	background-color: green;
-	height: 400rpx;
+	background-color: #ffffff;
+	height: 350rpx;
 }
 .user-avatar {
+	margin-left: auto;
+	margin-right: auto;
 	height: 81px;
 	width: 81px;
 	background-color: aliceblue;
 	text-align: center;
+	vertical-align: center;
+	border-radius: 50%;
+}
+
+.user-id {
+}
+
+.subscribe-info {
 }
