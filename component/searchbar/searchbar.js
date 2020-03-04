@@ -156,6 +156,13 @@ module.exports = /******/ (function(modules) {
 					}
 				},
 				methods: {
+					comfirmSearch: function comfirmSearch(e) {
+						// var _this = this;
+						this.setData({
+							value: e.detail.value
+						});
+						this.triggerEvent('confirm', e.detail);
+					},
 					clearInput: function clearInput() {
 						this.setData({
 							value: ''
