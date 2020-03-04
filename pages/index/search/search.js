@@ -1,21 +1,14 @@
-// pages/index/search/search.js
+const api = require('../../../utils/searchapi.js');
+
 Page({
 	/**
    * 页面的初始数据
    */
 	data: {
+		searchkeyword: '',
 		optionsIsShow: false,
 		searchbarstyle: 'searchbarstyle',
-		contentlist: [
-			{ id: 1, name: '搜索结果' },
-			{ id: 2, name: '搜索结果' },
-			{ id: 3, name: '搜索结果' },
-			{ id: 4, name: '搜索结果' },
-			{ id: 3, name: '搜索结果' },
-			{ id: 3, name: '搜索结果' },
-			{ id: 3, name: '搜索结果' },
-			{ id: 3, name: '搜索结果' }
-		],
+		contentlist: [],
 		frequent: [ '有内容更新时', '每天最多一次', '每周最多一次' ],
 		frequentIndex: 0,
 		from: [ '自动', '博客', '新闻', '在线文章', '视频', '读书' ],
@@ -35,13 +28,32 @@ Page({
 			subscribeModeIndex: 0
 		}
 	},
+	// 列表隐藏函数
 	showOptions: function() {
 		var IsShow = !this.data.optionsIsShow;
 		this.setData({
 			optionsIsShow: IsShow
 		});
 	},
-
+	comfirmSearch: function(e) {
+		console.log(e.detail.value);
+		let keyword = e.detail.value;
+		this.setData({
+			searchkeyword: e.detail.value
+		});
+		var _this = this;
+		api
+			.get('/test', {
+				function: 1,
+				keyword: keyword
+			})
+			.then((res) => {
+				console.log(res);
+				this.setData({
+					contentlist: res
+				});
+			});
+	},
 	// picker的设置
 	bindPickerChangeF: function(e) {
 		console.log('picker发送选择改变，携带值为', e.detail.value);
