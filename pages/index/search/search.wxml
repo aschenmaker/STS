@@ -63,6 +63,7 @@
 </view>
 </view>
 <view class="page-content">
+       <view class="page-title {{contentlist.length==0?'hide':''}}">搜索预览</view>
        <view class="content-list">
               <block wx:for-items="{{contentlist}}" wx:key="id">
                      <view class="content-list-item">

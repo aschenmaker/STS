@@ -131,11 +131,19 @@ picker {
 }
 
 .page-content {
-	padding-top: 400rpx;
+	padding: 400rpx 25px 0 25px;
+}
+
+.page-title {
+	color: rgba(0, 0, 0, 0.54);
+	font-size: 20px;
+	font-weight: 300;
+	display: inline-block;
+	margin-top: 30px;
+	margin-bottom: 0;
 }
 
 .content-list-item-news {
-	padding: 30rpx;
 	align-items: center;
 	transition: opacity .3s;
 }
