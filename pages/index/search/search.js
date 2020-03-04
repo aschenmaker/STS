@@ -52,6 +52,14 @@ Page({
 				this.setData({
 					contentlist: res
 				});
+			})
+			.catch((reason) => {
+				console.log(reason);
+				wx.showToast({
+					title: '网络超时',
+					icon: 'none',
+					duration: 2000
+				});
 			});
 	},
 	// picker的设置
