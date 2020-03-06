@@ -1,9 +1,10 @@
-/* pages/index/index.wxss */
+@import "../../component/weui-wxss/dist/style/weui.wxss";
+
 page {
 	background-color: #ffffff;
 }
 .index-hd {
-	padding-top: 280rpx;
+	padding-top: 90rpx;
 	padding-bottom: 20rpx;
 	text-align: center;
 }

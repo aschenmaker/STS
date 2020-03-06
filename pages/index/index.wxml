@@ -12,4 +12,26 @@
       </view>
     </view>
   </view>
+  <view class="subcribe-list">
+      <view class="first-row">
+        <view class="subcribe-list-title">我的订阅</view>
+        <view class="add-icon">
+          <icon class="weui-icon-add" type="add" size="12"></icon>
+        </view>
+      </view>
+      <block wx:for-items="{{subscribeList}}" wx:key="id">
+        <view class="subcribe-list-item">
+          <view>{{item.title}}</view>
+            <block wx:for-items="{{item.keywords}}" wx:key="id">
+              <view class="keyword">{{item}}</view>
+            </block> 
+          <view class="change-icon">
+            <mp-icon icon="add" color="black" size="100"></mp-icon>
+            <mp-icon icon="delete" color="black" size="12"></mp-icon>
+            <mp-icon icon="delete" color="black" size="12"></mp-icon>
+          </view>
+        </view>
+      </block>
+
+  </view>
 </view>

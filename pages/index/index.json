@@ -1,4 +1,6 @@
 {
 	"navigationBarTitleText": " ",
-	"usingComponents": {}
+	"usingComponents": {
+		"mp-icon": "../../component/icon/icon"
+	}
 }
