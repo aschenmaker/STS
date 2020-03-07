@@ -12,26 +12,33 @@
       </view>
     </view>
   </view>
-  <view class="subcribe-list">
+  <view class="my-subcribe-list">
       <view class="first-row">
         <view class="subcribe-list-title">我的订阅</view>
-        <view class="add-icon">
-          <icon class="weui-icon-add" type="add" size="12"></icon>
+        <view class="add-icon" bindtap="naviToSearch">
+          <mp-icon type="field" icon="add2" color="#888888" size="20"></mp-icon>
         </view>
       </view>
-      <block wx:for-items="{{subscribeList}}" wx:key="id">
-        <view class="subcribe-list-item">
-          <view>{{item.title}}</view>
-            <block wx:for-items="{{item.keywords}}" wx:key="id">
-              <view class="keyword">{{item}}</view>
-            </block> 
-          <view class="change-icon">
-            <mp-icon icon="add" color="black" size="100"></mp-icon>
-            <mp-icon icon="delete" color="black" size="12"></mp-icon>
-            <mp-icon icon="delete" color="black" size="12"></mp-icon>
+      <view class="manage-view">
+        <block wx:for-items="{{subscribeList}}" wx:key="id">
+          <view class="subcribe-list-item">
+            <view class="title-view" bindtap="naviToView">{{item.title}}</view>
+            <view class="keywords">
+              <block wx:for-items="{{item.keywords}}" wx:key="id">
+                <view class="keyword">{{item}}</view>
+              </block> 
+            </view>
+            <view class="change-icon">
+              <view class="edit-button" bindtap="editSub">
+                <mp-icon type="field" icon="pencil" color="#888888" size="20" ></mp-icon>
+              </view>  
+              <view class="edit-button" bindtap="deleteSub">
+                <mp-icon type="field" icon="delete" color="#888888" size="20"></mp-icon>
+              </view>
+      
+            </view>
           </view>
-        </view>
-      </block>
-
+        </block>
+      </view>
   </view>
 </view>
