@@ -1,14 +1,57 @@
 <view class="user-block">
-    <view class="user-avatar"> 头像</view>
-    <view class="user-id"> disconnect</view>
-    <view class="subscribe-info">已经订阅了 X 个内容</view>
+    <view class="user-avatar">
+        <image class="png" mode="widthFix" src="{{avatarUrl}}"></image>   
+    </view>
+    <view class="user-id"> {{nickname}}</view>
+    <image class="gif-wave" mode="scaleToFill" src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif"></image>
 </view>
+<view class="subscribe">
+    <view class="info-box">
+        <view class="num-sub">4</view>
+        <view class="descirption">
+            <view class="title">已订阅</view>
+            <view class="icon-in">
+                <mp-icon type="field" icon="note" color="#888888" size="14" ></mp-icon>
+            </view>
+        </view>
+    </view>
+    <view class="info-box mid">
+        <view class="num-new">14</view>
+        <view class="descirption">
+            <view class="title">新内容</view>
+            <view class="icon-in">
+                <mp-icon type="field" icon="text" color="#888888" size="14" ></mp-icon>
+            </view>
+        </view>
+    </view>
+    <view class="info-box">
+        <view class="num-star">2</view>
+        <view class="descirption">
+            <view class="title">已收藏</view>
+            <view class="icon-in">
+                <mp-icon type="field" icon="star" color="#888888" size="14" ></mp-icon>
+            </view>
+        </view>
+    </view>
+</view>    
 <view class="setting-list">
-    <view class="manage-sub">管理订阅</view>
-    <view class="logs">日志</view>
-    <view class="review">意见反馈</view>
-    <view class="about">关于</view>
+    <view class="list-item">
+        <view class="icon-mine"></view>
+        <view class="text">管理订阅</view>
+    </view>
+    <view class="list-item">
+        <view class="icon-mine"></view>
+        <view class="text">日志</view>
+    </view>
+    <view class="list-item">
+        <view class="icon-mine"></view>
+        <view class="text">意见反馈</view>
+    </view>
+    <view class="list-item">
+        <view class="icon-mine"></view>
+        <view class="text">关于</view>
+    </view>
 </view>
-<view class="weui-footer weui-footer_fixed-bottom">
+<!-- <view class="weui-footer weui-footer_fixed-bottom">
     <view class="weui-footer__text">Copyright © 2020 zjj cqs</view>
-</view>
+</view> -->
