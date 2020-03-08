@@ -1,4 +1,4 @@
-const baseURL = 'http://175.24.28.202:5000';
+const baseURL = 'http://www.jareee.com';
 const http = ({ url = '', params = {}, ...other } = {}) => {
 	wx.showLoading({
 		title: '加载中...'
