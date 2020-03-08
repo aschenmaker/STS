@@ -3,6 +3,13 @@
 page {
 	background-color: #ffffff;
 }
+
+.auth-bottom {
+	border-radius: 80rpx;
+	margin: 70rpx 50rpx;
+	font-size: 35rpx;
+}
+
 .index-hd {
 	padding-top: 90rpx;
 	padding-bottom: 20rpx;
@@ -126,4 +133,8 @@ page {
 	margin: 0 10px;
 	display: inline-block;
 	vertical-align: bottom;
+}
+
+.setting-list {
+	margin-top: 50rpx;
 }

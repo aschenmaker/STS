@@ -1,6 +1,17 @@
 <!--pages/index/index.wxml-->
+<view wx:if ="{{isHiden}}">
+    
+     <view class='auth-content'>
+     <text class="unauth-text">检查到您没打开授权</text>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+      </view>
+      <button class='auth-bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            授权登录
+        </button>
 
-<view class="index">
+</view>
+<view class="index" wx:else>
   <view class="index-hd">
     <image src="../../asset/img/logo.png" mode="widthFix" class="logo"></image>
   </view>
@@ -35,10 +46,10 @@
               <view class="edit-button" bindtap="deleteSub">
                 <mp-icon type="field" icon="delete" color="#888888" size="20"></mp-icon>
               </view>
-      
             </view>
           </view>
         </block>
       </view>
   </view>
 </view>
+
