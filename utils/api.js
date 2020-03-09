@@ -42,6 +42,7 @@ const getHeader = () => {
 };
 module.exports = {
 	baseURL,
+	http,
 	get(url, params = {}) {
 		return http({
 			url,
@@ -61,13 +62,13 @@ module.exports = {
 			params,
 			method: 'put'
 		});
-	},
-	// 这里不能使用 delete, delete为关键字段
-	myDelete(url, params = {}) {
-		return http({
-			url,
-			params,
-			method: 'delete'
-		});
 	}
+	// 这里不能使用 delete, delete为关键字段
+	// myDelete(url, params = {}) {
+	// 	return http({
+	// 		url,
+	// 		params,
+	// 		method: 'delete'
+	// 	});
+	// }
 };
