@@ -1,4 +1,4 @@
-const api = require('../../../utils/searchapi.js');
+const api = require('../../../utils/api.js');
 
 Page({
 	/**
