@@ -1,4 +1,5 @@
-// pages/index/index.js
+// const api = require('../../../utils/searchapi.js');
+
 Page({
 	/**
    * 页面的初始数据
@@ -62,6 +63,15 @@ Page({
 			url: './search/search'
 		});
 	},
+
+	//用于设置用户信息本地存储.
+	// setUserInfo:function(info){
+	// 	wx.setStorage({
+	// 			key: 'userinfo',
+	// 			data: info
+	// 	});
+	// },
+
 	// 授权页面授权按钮绑定事件
 	bindGetUserInfo: function(e) {
 		console.log(e);
@@ -71,6 +81,10 @@ Page({
 			// 获取到用户的信息了，打印到控制台上看下
 			console.log('用户的信息如下：');
 			console.log(e.detail.userInfo);
+			wx.setStorage({
+				key: 'userinfo',
+				data: e.detail.userInfo
+			});
 			// 隐藏授权页
 			that.setData({
 				isHiden: false
@@ -112,6 +126,7 @@ Page({
 					wx.getUserInfo({
 						success: (res) => {
 							// 可以将 res 发送给后台解码出 unionId
+							console.log(res);
 							wx.setStorage({
 								key: 'userinfo',
 								data: res.userInfo

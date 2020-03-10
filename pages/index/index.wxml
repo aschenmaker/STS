@@ -1,13 +1,14 @@
 <!--pages/index/index.wxml-->
 <view wx:if ="{{isHiden}}">
-    
+       <view class='header'>
+            <image mode="widthFix" src='../../asset/img/mylogo.png'></image>
+        </view>
      <view class='auth-content'>
-     <text class="unauth-text">检查到您没打开授权</text>
-            <view>申请获取以下权限</view>
-            <text>获得你的公开信息(昵称，头像等)</text>
+       <view>申请获取以下权限</view>
+       <text>获得您的公开信息(昵称，头像等)</text>
       </view>
       <button class='auth-bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
-            授权登录
+            点击授权登录
         </button>
 
 </view>

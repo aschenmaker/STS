@@ -14,15 +14,22 @@ Page({
    */
 	onLoad: function(options) {
 		// 设置用户头像，如果登录则取用户的用户头像
-		this.setUserPage();
+		this.readUserInfo();
 	},
 
-	setUserPage: function() {
-		var avatarUrl = app.globalData.userInfo.avatarUrl || avatarUrl;
-		var nickname = app.globalData.userInfo.nickName || nickname;
-		this.setData({
-			avatarUrl: avatarUrl,
-			nickname: nickname
+	// 读取本地存储的头像信息
+	readUserInfo: function() {
+		// var _this = this;
+		wx.getStorage({
+			key: 'userinfo',
+			success: (res) => {
+				var avatarUrl = res.data.avatarUrl || this.data.avatarUrl;
+				var nickname = res.data.nickName || this.data.nickname;
+				this.setData({
+					avatarUrl,
+					nickname
+				});
+			}
 		});
 	},
 
@@ -34,7 +41,9 @@ Page({
 	/**
    * 生命周期函数--监听页面显示
    */
-	onShow: function() {},
+	onShow: function() {
+		this.readUserInfo();
+	},
 
 	/**
    * 生命周期函数--监听页面隐藏

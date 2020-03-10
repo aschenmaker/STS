@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
 	data: {
+		// 检查是否为修改订阅
+		toEdited: false,
 		searchkeyword: '',
 		optionsIsShow: false,
 		searchbarstyle: 'searchbarstyle',
