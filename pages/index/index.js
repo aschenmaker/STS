@@ -60,7 +60,7 @@ Page({
 
 	naviToSearch: function() {
 		wx.navigateTo({
-			url: './search/search'
+			url: '../search/search'
 		});
 	},
 
