@@ -230,7 +230,7 @@ Page({
 		console.log(options);
 		var _this = this;
 		var id = options.id;
-		if (id.length > 0) {
+		if (id) {
 			wx.getStorage({
 				key: 'options',
 				success(res) {

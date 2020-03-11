@@ -7,12 +7,64 @@ Page({
    */
 	data: {
 		isHiden: true,
-		subscribeList: []
+		subscribeList: [],
+		_code: ''
 	},
 
 	naviToSearch: function() {
 		wx.navigateTo({
 			url: '../search/search'
+		});
+	},
+	// 登录请求函数
+	loginFunction: function() {
+		wx.getUserInfo({
+			success: ({ rawData, signature, encryptedData, iv, userInfo }) => {
+				// 可以将 res 发送给后台解码出 unionId
+				let params = {
+					function: '2',
+					code: this.data._code,
+					rawData,
+					signature,
+					encryptedData,
+					iv
+				};
+				console.log(params);
+				api
+					.post('/test?', params)
+					.then((res) => {
+						console.log(res);
+						console.log('登录成功，获取到 openid');
+						userInfo['openId'] = res.openId;
+					})
+					.then(() => {
+						wx.setStorage({
+							key: 'userinfo',
+							data: userInfo
+						});
+					})
+					.catch((reason) => {
+						onsole.log(reason);
+						wx.showToast({
+							title: '网络超时',
+							icon: 'none',
+							duration: 2000
+						});
+						wx.setStorage({
+							key: 'userinfo',
+							data: wrongInfo
+						});
+					});
+				// console.log(userInfo);
+
+				this.setData({
+					isHiden: false
+				});
+
+				if (this.userInfoReadyCallback) {
+					this.userInfoReadyCallback(res);
+				}
+			}
 		});
 	},
 
@@ -25,14 +77,7 @@ Page({
 			// 获取到用户的信息了，打印到控制台上看下
 			console.log('用户的信息如下：');
 			console.log(e.detail.userInfo);
-			wx.setStorage({
-				key: 'userinfo',
-				data: e.detail.userInfo
-			});
-			// 隐藏授权页
-			that.setData({
-				isHiden: false
-			});
+			this.loginFunction();
 		} else {
 			//用户按了拒绝按钮
 			wx.showModal({
@@ -133,11 +178,12 @@ Page({
 	onLoad: function(options) {
 		// 登录
 		var _this = this;
-		var _code = '';
+
 		// loginapi.login();
 		wx.login({
 			success: (res) => {
-				_code = res.code;
+				_this.setData({ _code: res.code });
+				console.log(res.code);
 			}
 		});
 		// 获取用户信息
@@ -145,46 +191,7 @@ Page({
 			success: (res) => {
 				if (res.authSetting['scope.userInfo']) {
 					// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-					wx.getUserInfo({
-						success: ({ rawData, signature, encryptedData, iv, userInfo }) => {
-							// 可以将 res 发送给后台解码出 unionId
-							let params = {
-								function: '2',
-								code: _code,
-								rawData,
-								signature,
-								encryptedData,
-								iv
-							};
-							api
-								.post('/test?', params)
-								.then((res) => {
-									console.log(res);
-									console.log('登录成功，获取到 openid');
-									userInfo['openId'] = res.openId;
-								})
-								.then(() => {
-									wx.setStorage({
-										key: 'userinfo',
-										data: userInfo
-									});
-								});
-							// console.log(userInfo);
-
-							this.setData({
-								isHiden: false
-							});
-
-							if (this.userInfoReadyCallback) {
-								this.userInfoReadyCallback(res);
-							}
-						},
-						fail: () => {
-							_this.setData({
-								isHiden: true
-							});
-						}
-					});
+					_this.loginFunction();
 				}
 			}
 		});
