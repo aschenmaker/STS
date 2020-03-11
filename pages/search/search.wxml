@@ -1,11 +1,14 @@
 <view class="main">
        <view class="namebar">
        <view wx:if="{{toEdited}}" class="content">修改订阅</view>
-        <view wx:else class="content">🔍创建订阅</view>
-        <view class="desc">即刻订阅你想搜索的内容</view>
+       <view wx:else class="content">🔍创建订阅</view>
+       <view class="desc">即刻订阅你想搜索的内容</view>
  </view>
- <view class="search-bar">
-       <mp-searchbar bindselectresult="selectResult" placeholder="创建你的搜索订阅吧" search="{{search}}" borderColor="#4752b3" ext-class="{{searchbarstyle}}" searchbarText="创建你的搜索订阅吧"  bindconfirm="comfirmSearch">    </mp-searchbar>
+ <view class="search-bar" wx:if="{{toEdited}}" >
+       <mp-searchbar placeholder="创建你的搜索订阅吧" cancel="{{false}}" focus="{{true}}" borderColor="#4752b3" value='{{options.searchkeyword}}' searchbarText="创建你的搜索订阅吧"  bindconfirm="comfirmSearch" >    </mp-searchbar>
+ </view>
+ <view class="search-bar" wx:else>
+       <mp-searchbar placeholder="创建你的搜索订阅吧" borderColor="#4752b3" ext-class="{{searchbarstyle}}" searchbarText="创建你的搜索订阅吧"  bindconfirm="comfirmSearch">    </mp-searchbar>
 </view>
 <view class="section">
       <view class="options">
@@ -15,46 +18,46 @@
               <!-- 关键词： -->
               <view class="picker-view">
                      <text class="textPicker">关键词</text>
-                     <input type="text" placeholder="请输入关键词，以空格分隔" maxlength="40" class="subscribe-keywords" bindinput="bindinputKeywords"/>
+                     <input type="text" placeholder="请输入关键词，以空格分隔" value="{{options.subscibeKeywords}}" maxlength="40" class="subscribe-keywords" bindinput="bindinputKeywords"/>
               </view>
 
               <!-- 来源： -->
                 <view class="picker-view">
                         <text class="textPicker">来源</text>
-              <picker bindchange="bindPickerChangeC" value="{{fromIndex}}" range="{{from}}">
-                    <view class="picker">{{from[fromIndex]}}</view>
+              <picker bindchange="bindPickerChangeC" value="{{options.fromIndex}}" range="{{from}}">
+                    <view class="picker">{{from[options.fromIndex]}}</view>
               </picker>
                 </view>
              
               <!-- 数量： -->
                 <view class="picker-view">
                       <text class="textPicker">数量</text>
-                      <picker bindchange="bindPickerChangeA" value="{{amountIndex}}" range="{{amount}}">
-                    <view class="picker">{{amount[amountIndex]}}</view>
+                      <picker bindchange="bindPickerChangeA" value="{{options.amountIndex}}" range="{{amount}}">
+                    <view class="picker">{{amount[options.amountIndex]}}</view>
                    </picker>
                 </view>
 
               <!-- 频率： -->
               <view class="picker-view">
                      <text class="textPicker">频率</text>
-                     <picker bindchange="bindPickerChangeF" value="{{frequentIndex}}" range="{{frequent}}">           
-                            <view class="picker">{{frequent[frequentIndex]}}</view>
+                     <picker bindchange="bindPickerChangeF" value="{{options.frequentIndex}}" range="{{frequent}}">           
+                            <view class="picker">{{frequent[options.frequentIndex]}}</view>
                      </picker>
               </view>
        
               <!-- 搜索时间： -->
                 <view class="picker-view">
                        <text class="textPicker">搜索时间</text>
-                      <picker bindchange="bindPickerChangeL" value="{{searchTimeIndex}}" range="{{searchTime}}" mode="{{searchTimeMode}}">
-                    <view class="picker">{{timeValue}}</view>
+                      <picker bindchange="bindPickerChangeL" value="{{options.searchTimeIndex}}" range="{{searchTime}}" mode="{{searchTimeMode}}">
+                    <view class="picker">{{options.timeValue}}</view>
                   </picker>
                 </view>
               
               <!-- 订阅模式： -->
                 <view class="picker-view">
                          <text class="textPicker">订阅结果发送</text>
-              <picker bindchange="bindPickerChangeS" value="{{subscribeModeIndex}}" range="{{subscribeMode}}">
-                    <view class="picker">{{subscribeMode[subscribeModeIndex]}}</view>
+              <picker bindchange="bindPickerChangeS" value="{{options.subscribeModeIndex}}" range="{{subscribeMode}}">
+                    <view class="picker">{{subscribeMode[options.subscribeModeIndex]}}</view>
               </picker>
                 </view>
             
@@ -62,8 +65,8 @@
 
          
       <view class="creatButton">
-            <button wx:if="{{toEdited}}" class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" bindtap="createSubscibe" disabled="{{!searchkeyword}}">修改订阅</button>
-            <button wx:else class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" bindtap="createSubscibe" disabled="{{!searchkeyword}}" >创建订阅</button>
+            <button wx:if="{{toEdited}}" class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="edit_subcribe" bindtap="createSubscibe" disabled="{{!options.searchkeyword}}">修改订阅</button>
+            <button wx:else class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" bindtap="createSubscibe" disabled="{{!options.searchkeyword}}" >创建订阅</button>
             <button class="showbutton {{optionsIsShow?'hide':''}}" id="show_options" bindtap="showOptions" >显示选项 ▼</button>
             <button class="showbutton {{optionsIsShow?'':'hide'}}" id="hide_options" bindtap="showOptions">隐藏选项 ▲</button>
       </view>

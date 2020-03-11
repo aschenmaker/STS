@@ -41,10 +41,10 @@
               </block> 
             </view>
             <view class="change-icon">
-              <view class="edit-button" bindtap="editSub">
+              <view class="edit-button" bindtap="editSub" id="{{item.id}}">
                 <mp-icon type="field" icon="pencil" color="#888888" size="20" ></mp-icon>
               </view>  
-              <view class="edit-button" bindtap="deleteSub">
+              <view class="edit-button" bindtap="deleteSub" id="{{item.id}}">
                 <mp-icon type="field" icon="delete" color="#888888" size="20"></mp-icon>
               </view>
             </view>

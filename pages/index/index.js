@@ -1,4 +1,5 @@
-// const api = require('../../../utils/searchapi.js');
+const api = require('../../utils/api.js');
+// const loginapi = require('../../utils/loginapi.js');
 
 Page({
 	/**
@@ -6,56 +7,7 @@ Page({
    */
 	data: {
 		isHiden: true,
-		subscribeList: [
-			{
-				title: '中国地质大学',
-				keywords: {
-					keyword1: '中国',
-					keyword2: '地质大学'
-				},
-				id: '1'
-			},
-			{
-				title: '新冠肺炎',
-				keywords: {
-					keyword1: '新冠',
-					keyword2: 'conv'
-				},
-				id: '2'
-			},
-			{
-				title: 'node.js',
-				keywords: {
-					keyword1: 'node',
-					keyword2: 'javascript'
-				},
-				id: '3'
-			},
-			{
-				title: 'smart',
-				keywords: {
-					keyword1: 'benz',
-					keyword2: 'car'
-				},
-				id: '4'
-			},
-			{
-				title: '湖北省武汉市鲁磨路',
-				keywords: {
-					keyword1: 'benz',
-					keyword2: 'car'
-				},
-				id: '4'
-			},
-			{
-				title: 'smart',
-				keywords: {
-					keyword1: 'benz',
-					keyword2: 'car'
-				},
-				id: '4'
-			}
-		]
+		subscribeList: []
 	},
 
 	naviToSearch: function() {
@@ -63,14 +15,6 @@ Page({
 			url: '../search/search'
 		});
 	},
-
-	//用于设置用户信息本地存储.
-	// setUserInfo:function(info){
-	// 	wx.setStorage({
-	// 			key: 'userinfo',
-	// 			data: info
-	// 	});
-	// },
 
 	// 授权页面授权按钮绑定事件
 	bindGetUserInfo: function(e) {
@@ -106,16 +50,94 @@ Page({
 		}
 	},
 
+	// 请求服务器订阅数据，存储本地订阅数据
+	readSubscribeInfo: function() {
+		var _this = this;
+		var infoList = [];
+		wx.getStorage({
+			key: 'options',
+			success(res) {
+				// console.log(res.data);
+				res.data.map((value, index) => {
+					var list = { title: '', keywords: {}, id: '' };
+					list.id = index;
+					list.title = value.searchkeyword;
+					// console.log(value.keywords);
+					if (value.keywords.length > 0) {
+						value.keywords.map((value, i) => {
+							list.keywords[`keyword${i}`] = value;
+						});
+					}
+					infoList.push(list);
+				});
+				// console.log(infoList);
+				_this.setData({
+					subscribeList: infoList
+				});
+			}
+		});
+	},
+	// 编辑订阅
+	editSub: function(e) {
+		console.log(e);
+		var id = 'id=' + e.currentTarget.id;
+		wx.navigateTo({
+			url: '../../pages/search/search?' + id,
+			events: {
+				// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+				acceptDataFromOpenedPage: function(data) {
+					console.log(data);
+				},
+				someEvent: function(data) {
+					console.log(data);
+				}
+			},
+			success: function(res) {
+				// 通过eventChannel向被打开页面传送数据
+				res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' });
+			}
+		});
+	},
+	// 删除订阅
+	deleteSub: function(e) {
+		var _this = this;
+		wx.showModal({
+			title: '提示',
+			content: '这将删除您的订阅',
+			cancelColor: '#67C141',
+			confirmColor: '#AAAAAA',
+			success(r) {
+				if (r.confirm) {
+					wx.getStorage({
+						key: 'options',
+						success(res) {
+							res.data.splice(e.target.id, 1);
+							wx.setStorage({
+								key: 'options',
+								data: res.data,
+								success() {
+									_this.readSubscribeInfo();
+								}
+							});
+						}
+					});
+				} else if (r.cancel) {
+				}
+			}
+		});
+	},
+
 	/**
    * 生命周期函数--监听页面加载
    */
 	onLoad: function(options) {
 		// 登录
 		var _this = this;
+		var _code = '';
+		// loginapi.login();
 		wx.login({
 			success: (res) => {
-				console.log(res.code);
-				// 发送 res.code 到后台换取 openId, sessionKey, unionId
+				_code = res.code;
 			}
 		});
 		// 获取用户信息
@@ -124,18 +146,35 @@ Page({
 				if (res.authSetting['scope.userInfo']) {
 					// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
 					wx.getUserInfo({
-						success: (res) => {
+						success: ({ rawData, signature, encryptedData, iv, userInfo }) => {
 							// 可以将 res 发送给后台解码出 unionId
-							console.log(res);
-							wx.setStorage({
-								key: 'userinfo',
-								data: res.userInfo
-							});
+							let params = {
+								function: '2',
+								code: _code,
+								rawData,
+								signature,
+								encryptedData,
+								iv
+							};
+							api
+								.post('/test?', params)
+								.then((res) => {
+									console.log(res);
+									console.log('登录成功，获取到 openid');
+									userInfo['openId'] = res.openId;
+								})
+								.then(() => {
+									wx.setStorage({
+										key: 'userinfo',
+										data: userInfo
+									});
+								});
+							// console.log(userInfo);
+
 							this.setData({
 								isHiden: false
 							});
-							// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-							// 所以此处加入 callback 以防止这种情况
+
 							if (this.userInfoReadyCallback) {
 								this.userInfoReadyCallback(res);
 							}
@@ -159,7 +198,9 @@ Page({
 	/**
    * 生命周期函数--监听页面显示
    */
-	onShow: function() {},
+	onShow: function() {
+		this.readSubscribeInfo();
+	},
 
 	/**
    * 生命周期函数--监听页面隐藏
