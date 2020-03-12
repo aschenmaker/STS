@@ -1,4 +1,5 @@
 const api = require('../../utils/api.js');
+
 // const loginapi = require('../../utils/loginapi.js');
 
 Page({
@@ -7,8 +8,9 @@ Page({
    */
 	data: {
 		isHiden: true,
-		subscribeList: [],
-		_code: ''
+		subscribeList: [ { title: '您还没有订阅', keywords: { keyword1: '开始，', keyword2: '订阅吧！' } } ],
+		_code: '',
+		openId: ''
 	},
 
 	naviToSearch: function() {
@@ -17,7 +19,8 @@ Page({
 		});
 	},
 	// 登录请求函数
-	loginFunction: function() {
+	loginFunction: function(callback) {
+		var _this = this;
 		wx.getUserInfo({
 			success: ({ rawData, signature, encryptedData, iv, userInfo }) => {
 				// 可以将 res 发送给后台解码出 unionId
@@ -30,12 +33,20 @@ Page({
 					iv
 				};
 				console.log(params);
+				console.log(callback);
 				api
 					.post('/test?', params)
 					.then((res) => {
 						console.log(res);
 						console.log('登录成功，获取到 openid');
 						userInfo['openId'] = res.openId;
+						_this.setData(
+							{
+								openId: res.openId
+								//加入了回掉函数
+							},
+							callback && callback(res.openId)
+						);
 					})
 					.then(() => {
 						wx.setStorage({
@@ -44,7 +55,7 @@ Page({
 						});
 					})
 					.catch((reason) => {
-						onsole.log(reason);
+						console.log(reason);
 						wx.showToast({
 							title: '网络超时',
 							icon: 'none',
@@ -73,11 +84,11 @@ Page({
 		console.log(e);
 		if (e.detail.userInfo) {
 			//用户按了允许授权按钮
-			var that = this;
+
 			// 获取到用户的信息了，打印到控制台上看下
 			console.log('用户的信息如下：');
 			console.log(e.detail.userInfo);
-			this.loginFunction();
+			this.loginFunction(this.querySub);
 		} else {
 			//用户按了拒绝按钮
 			wx.showModal({
@@ -172,6 +183,19 @@ Page({
 		});
 	},
 
+	// 查询订阅
+	querySub: function(UID) {
+		let params = {
+			UID,
+			exc: 'search',
+			function: '3'
+		};
+
+		console.log('查询json:-----', params);
+		api.post('/test?', params).then((res) => {
+			console.log(res);
+		});
+	},
 	/**
    * 生命周期函数--监听页面加载
    */
@@ -191,10 +215,11 @@ Page({
 			success: (res) => {
 				if (res.authSetting['scope.userInfo']) {
 					// 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-					_this.loginFunction();
+					_this.loginFunction(_this.querySub);
 				}
 			}
 		});
+		// 查询订阅
 	},
 
 	/**
