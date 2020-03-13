@@ -14,6 +14,7 @@
 </view>
 <view class="index" wx:else>
   <view class="index-hd">
+    <view wx:if="{{subscribeList.length==0}}" class="just-block" ></view>
     <image src="../../asset/img/logo.png" mode="widthFix" class="logo"></image>
   </view>
   <view class="search-back">
@@ -25,7 +26,7 @@
     </view>
   </view>
   <view class="my-subcribe-list">
-      <view class="first-row">
+      <view class="first-row" wx:if="{{subscribeList.length>0}}">
         <view class="subcribe-list-title">我的订阅</view>
         <view class="add-icon" bindtap="naviToSearch">
           <mp-icon type="field" icon="add2" color="#888888" size="20"></mp-icon>

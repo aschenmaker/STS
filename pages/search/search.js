@@ -1,4 +1,5 @@
 const api = require('../../utils/api.js');
+const exchange = require('../../utils/options2sever.js');
 
 Page({
 	/**
@@ -29,9 +30,9 @@ Page({
 			frequentIndex: 0,
 			fromIndex: 0,
 			amountIndex: 0,
-
 			subscribeModeIndex: 1,
-			timeValue: '自动'
+			timeValue: '自动',
+			subId: ''
 		}
 	},
 	// setoptionsfunction
@@ -152,6 +153,7 @@ Page({
 		} else {
 			var value = e.detail.value;
 		}
+		console.log(value);
 		this.setOptions({
 			timeValue: value
 		});
@@ -170,64 +172,91 @@ Page({
 		if (settings.subscibeKeywords.length != 0) {
 			settings.keywords = settings.subscibeKeywords.split(' ').filter((item) => item.length > 0);
 		}
+
 		var arr = [];
 		arr.push(settings);
-		this.setData(
-			{
-				options: settings
-			},
-			() => {
-				wx.getStorage({
-					key: 'options',
-					success(res) {
-						console.log('本地存储存在，进行读取');
-						var sameIndex = 0;
-						var isE = res.data.some((value, index) => {
-							sameIndex = index;
-							return value.searchkeyword == settings.searchkeyword;
-						});
-						console.log(isE, sameIndex);
-						if (isE) {
-							// 搜索了同一类容 直接覆盖
-							res.data[sameIndex] = settings;
-							wx.setStorage({
-								key: 'options',
-								data: res.data
-							});
-						} else {
-							res.data.push(settings);
-							wx.setStorage({
-								key: 'options',
-								data: res.data
-							});
-						}
-						wx.switchTab({
-							url: '../../pages/index/index'
-						});
+		console.log(settings);
+		var exc = '';
+		console.log();
+		let params = {};
+		if (e.currentTarget.id.length == 13) {
+			exc = 'alter';
+			params = exchange.optionsToSever(settings, exc, this.data.UID);
+			params = Object.assign(params, { subscriptionID: settings.subId });
+			// delete params.UID;
+			console.log('-----------修改------------');
+		} else {
+			exc = 'add';
+			params = exchange.optionsToSever(settings, exc, this.data.UID);
+			console.log('-----------新增------------');
+		}
+		console.log('用于新增和修改的请求', params);
+		api
+			.post('/test?', params)
+			.then((res) => {
+				console.log(res);
+				if (res.SubscriotionID) {
+					settings.subId = res.SubscriotionID;
+				}
+				console.log(settings);
+			})
+			.then(() => {
+				this.setData(
+					{
+						options: settings
 					},
-					fail() {
-						console.log('本地无存储，进行写入');
-						wx.setStorage({
+					() => {
+						wx.getStorage({
 							key: 'options',
-							data: arr
-						});
-						wx.switchTab({
-							url: '../../pages/index/index'
+							success(res) {
+								console.log('本地存储存在，进行读取');
+								var sameIndex = 0;
+								var isE = res.data.some((value, index) => {
+									sameIndex = index;
+									return value.searchkeyword == settings.searchkeyword;
+								});
+								console.log(isE, sameIndex);
+								if (isE) {
+									// 搜索了同一类容 直接覆盖
+									res.data[sameIndex] = settings;
+									wx.setStorage({
+										key: 'options',
+										data: res.data
+									});
+								} else {
+									res.data.push(settings);
+									wx.setStorage({
+										key: 'options',
+										data: res.data
+									});
+								}
+								wx.switchTab({
+									url: '../../pages/index/index'
+								});
+							},
+							fail() {
+								console.log('本地无存储，进行写入');
+								wx.setStorage({
+									key: 'options',
+									data: arr
+								});
+								wx.switchTab({
+									url: '../../pages/index/index'
+								});
+							}
 						});
 					}
-				});
-			}
-		);
-		// fromIndex: 0,
-		// 	amountIndex: 0,
-		// 	languageIndex: 1,
-		// 	subscribeModeIndex: 0
+				);
+			});
 	},
 	/**
    * 生命周期函数--监听页面加载
    */
 	onLoad: function(options) {
 		console.log(options);
+		this.setData({
+			UID: options.UID
+		});
 		var _this = this;
 		var id = options.id;
 		if (id) {

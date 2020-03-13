@@ -1,4 +1,5 @@
 const api = require('../../utils/api.js');
+const exchange = require('../../utils/options2sever.js');
 
 // const loginapi = require('../../utils/loginapi.js');
 
@@ -14,8 +15,9 @@ Page({
 	},
 
 	naviToSearch: function() {
+		var url = '../search/search?' + 'UID=' + this.data.openId;
 		wx.navigateTo({
-			url: '../search/search'
+			url
 		});
 	},
 	// 登录请求函数
@@ -137,8 +139,9 @@ Page({
 	editSub: function(e) {
 		console.log(e);
 		var id = 'id=' + e.currentTarget.id;
+		var UID = '&UID=' + this.data.openId;
 		wx.navigateTo({
-			url: '../../pages/search/search?' + id,
+			url: '../../pages/search/search?' + id + UID,
 			events: {
 				// 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
 				acceptDataFromOpenedPage: function(data) {
@@ -167,14 +170,43 @@ Page({
 					wx.getStorage({
 						key: 'options',
 						success(res) {
-							res.data.splice(e.target.id, 1);
-							wx.setStorage({
-								key: 'options',
-								data: res.data,
-								success() {
-									_this.readSubscribeInfo();
-								}
-							});
+							console.log(res);
+							console.log(e.currentTarget.id);
+							console.log(res.data[e.currentTarget.id].subId);
+							api
+								.post('/test?', {
+									function: '3',
+									exc: 'delete',
+									subscriptionID: res.data[e.currentTarget.id].subId
+								})
+								.then((res) => {
+									console.log(res);
+									return new Promise((resolve, reject) => {
+										if (res.subscription_delete_status == 'success') {
+											return resolve();
+										} else {
+											return reject(res);
+										}
+									});
+								})
+								.then(
+									() => {
+										res.data.splice(e.currentTarget.id, 1);
+										wx.setStorage({
+											key: 'options',
+											data: res.data,
+											success() {
+												_this.readSubscribeInfo();
+											}
+										});
+									},
+									(res) => {
+										console.log('删除发生错误。');
+									}
+								)
+								.catch((res) => {
+									console.log(res);
+								});
 						}
 					});
 				} else if (r.cancel) {
@@ -185,6 +217,7 @@ Page({
 
 	// 查询订阅
 	querySub: function(UID) {
+		var _this = this;
 		let params = {
 			UID,
 			exc: 'search',
@@ -193,7 +226,18 @@ Page({
 
 		console.log('查询json:-----', params);
 		api.post('/test?', params).then((res) => {
-			console.log(res);
+			console.log(res.SubcriptionID);
+			var options = res.SubcriptionID.map((item) => {
+				return (item = exchange.severToOptions(item));
+			});
+			console.log(options);
+			wx.setStorage({
+				key: 'options',
+				data: options,
+				success() {
+					_this.readSubscribeInfo();
+				}
+			});
 		});
 	},
 	/**

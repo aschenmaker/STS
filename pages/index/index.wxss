@@ -4,6 +4,9 @@ page {
 	background-color: #ffffff;
 }
 
+.just-block {
+	height: 240rpx;
+}
 .auth-bottom {
 	border-radius: 80rpx;
 	margin: 70rpx 50rpx;
