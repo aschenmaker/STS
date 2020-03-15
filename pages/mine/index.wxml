@@ -7,7 +7,7 @@
 </view>
 <view class="subscribe">
     <view class="info-box">
-        <view class="num-sub">4</view>
+        <view class="num-sub">{{subsciribedNumber}}</view>
         <view class="descirption">
             <view class="title">已订阅</view>
             <view class="icon-in">

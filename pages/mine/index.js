@@ -6,7 +6,8 @@ Page({
    */
 	data: {
 		avatarUrl: '../../asset/img/avatar.png',
-		nickname: '未授权'
+		nickname: '未授权',
+		subsciribedNumber: '0'
 	},
 
 	/**
@@ -32,6 +33,19 @@ Page({
 			}
 		});
 	},
+	//读取订阅信息
+	readOptions: function() {
+		wx.getStorage({
+			key: 'options',
+			success: (res) => {
+				console.log(res.data);
+				var subsciribedNumber = res.data.length ? `${res.data.length}` : '0';
+				this.setData({
+					subsciribedNumber
+				});
+			}
+		});
+	},
 
 	/**
    * 生命周期函数--监听页面初次渲染完成
@@ -43,6 +57,7 @@ Page({
    */
 	onShow: function() {
 		this.readUserInfo();
+		this.readOptions();
 	},
 
 	/**
