@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+	"navigationBarTitleText": "发现",
+	"navigationBarBackgroundColor": "#53BAAE",
+	"navigationBarTextStyle": "white",
+	"usingComponents": {},
+	"disableScroll": true
 }
