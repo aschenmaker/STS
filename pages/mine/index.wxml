@@ -35,9 +35,9 @@
     </view>
 </view>    
 <view class="setting-list">
-    <view class="list-item">
+    <view class="list-item" bindtap="naviToMail">
         <view class="icon-mine"></view>
-        <view class="text">管理订阅</view>
+        <view class="text">邮箱管理</view>
     </view>
     <view class="list-item">
         <view class="icon-mine"></view>
