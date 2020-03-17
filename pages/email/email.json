@@ -1,0 +1,9 @@
+{
+	"navigationBarTitleText": " ",
+	"navigationBarBackgroundColor": "#f7f7f7",
+	"usingComponents": {
+		"mp-cells": "../../component/cells/cells",
+		"mp-cell": "../../component/cell/cell",
+		"mp-slideview": "../../component/slideview/slideview"
+	}
+}

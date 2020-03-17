@@ -22,7 +22,7 @@ Page({
 		searchTime: [ '自动' ],
 		searchTimeMode: 'selector',
 		// 订阅结果的模式
-		subscribeMode: [ '发送全部内容PDF', '发送到您的邮箱', '微信小程序提醒' ],
+		subscribeMode: [ '发送全部内容PDF', '发送到您的邮箱' ],
 		// 修改的数据集
 		options: {
 			searchkeyword: '',

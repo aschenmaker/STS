@@ -1,0 +1,27 @@
+<!--pages/email/email.wxml-->
+<view class="title">
+    <view class="b">邮箱管理</view>
+    <view class="t">设置邮箱以启用推送</view>
+</view>
+<view class="email-list">
+    <mp-cells title="订阅邮箱列表  (左滑删除)">
+        <mp-slideview show="{{false}}" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+            <mp-cell value="752277051@qq.com" footer="1"></mp-cell>
+        </mp-slideview>
+    </mp-cells>
+</view>
+
+<view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
+    <view class="modals-cancel" bindtap="hideModal"></view>
+    <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
+        <view class="add-title">增加邮箱</view>
+        <input type="text" placeholder="请输入邮箱地址" value="" bindfocus="" auto-focus/>
+        <button class="add-button"  bindtap="showModal">增加邮箱</button>
+    </view>
+</view>
+
+<view class="add-email">
+      <button class="show-button"  bindtap="showModal">增加邮箱</button>
+</view>
+
+
