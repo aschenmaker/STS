@@ -16,12 +16,6 @@
 				"selectedIconPath": "/asset/img/homeSelected.png"
 			},
 			{
-				"pagePath": "pages/find/index",
-				"text": "订阅",
-				"iconPath": "/asset/img/sub.png",
-				"selectedIconPath": "/asset/img/subSeleted.png"
-			},
-			{
 				"pagePath": "pages/mine/index",
 				"text": "我",
 				"iconPath": "/asset/img/mine.png",
