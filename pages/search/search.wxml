@@ -12,7 +12,7 @@
 </view>
 <view class="section">
       <view class="options">
-             <text class=" {{optionsIsShow?'hide':''}}" >这将为您创建订阅</text>
+             <text class=" {{optionsIsShow?'hide':''}}" >这将为您创建订阅, 结果将发送到您的邮箱</text>
       </view>
       <view class="create-subcribe-options {{optionsIsShow?'options-show':''}}">
               <!-- 关键词： -->
@@ -60,6 +60,10 @@
                     <view class="picker">{{subscribeMode[options.subscribeModeIndex]}}</view>
               </picker>
                 </view>
+              <!-- 订阅邮箱 -->
+              <view hidden="{{!toEdited}}" class="picker-view" bindtap="naviToMail">
+                     <text class="delay-email">修改关联邮箱</text>
+              </view>
             
        </view>
 

@@ -1,22 +1,36 @@
 <!--pages/email/email.wxml-->
 <view class="title">
-    <view class="b">邮箱管理</view>
-    <view class="t">设置邮箱以启用推送</view>
+    <view class="b">关联邮箱</view>
+    <view class="t">为此订阅关联邮箱以启用推送,可填写多个以推送到不同邮箱</view>
 </view>
-<view class="email-list">
-    <mp-cells title="订阅邮箱列表  (左滑删除)">
-        <mp-slideview show="{{false}}" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
-            <mp-cell value="752277051@qq.com" footer="1"></mp-cell>
-        </mp-slideview>
+<view class="email-list" hidden="{{!mailList.length}}">
+    <mp-cells title="关联邮箱列表  (左滑删除)">
+        <block wx:for="{{mailList}}" wx:key="item" >
+            <mp-slideview id="{{index}}" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+                <mp-cell value="{{item.email}}" footer="{{item.SubscriptionID}}" ></mp-cell>
+            </mp-slideview>
+        </block>
     </mp-cells>
 </view>
 
 <view class="modals modals-bottom-dialog" hidden="{{hideModal}}">
     <view class="modals-cancel" bindtap="hideModal"></view>
     <view class="bottom-dialog-body bottom-pos" animation="{{animationData}}">
-        <view class="add-title">增加邮箱</view>
-        <input type="text" placeholder="请输入邮箱地址" value="" bindfocus="" auto-focus/>
-        <button class="add-button"  bindtap="showModal">增加邮箱</button>
+        <view class="pop-left" bindtap="hideModal">取消</view>
+        <view class="pop-right" bindtap="confirmEmail">确认</view>
+         <view class="float-title">邮箱</view>
+        <view class="weui-cells__title">增加邮箱</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <input auto-focus="{{true}}" class=" email-input" type="text" placeholder="请输入邮箱地址" value="" bindinput="emailInput"/>
+            </view>
+        </view>
+        <view class="weui-cells__title">填写备注信息</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <input auto-focus="{{true}}" class=" email-input" type="text" placeholder="请输入备注" value="" bindinput="subInput"/>
+            </view>
+        </view>
     </view>
 </view>
 

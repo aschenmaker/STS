@@ -22,7 +22,7 @@ Page({
 		searchTime: [ '自动' ],
 		searchTimeMode: 'selector',
 		// 订阅结果的模式
-		subscribeMode: [ '发送全部内容PDF', '发送到您的邮箱' ],
+		subscribeMode: [ '发送全部内容PDF', '发送简报' ],
 		// 修改的数据集
 		options: {
 			searchkeyword: '',
@@ -166,6 +166,7 @@ Page({
 	},
 	// 创建订阅按钮
 	createSubscibe: function(e) {
+		var that = this;
 		console.log(e);
 		var settings = this.data.options;
 		settings.keywords = [];
@@ -223,16 +224,20 @@ Page({
 										key: 'options',
 										data: res.data
 									});
+									wx.switchTab({
+										url: '../../pages/index/index'
+									});
 								} else {
 									res.data.push(settings);
 									wx.setStorage({
 										key: 'options',
 										data: res.data
 									});
+									var url = '../email/email?' + 'subId=' + settings.subId;
+									wx.redirectTo({
+										url
+									});
 								}
-								wx.switchTab({
-									url: '../../pages/index/index'
-								});
 							},
 							fail() {
 								console.log('本地无存储，进行写入');
@@ -240,14 +245,22 @@ Page({
 									key: 'options',
 									data: arr
 								});
-								wx.switchTab({
-									url: '../../pages/index/index'
+								var url = '../email/email?' + 'subId=' + settings.subId;
+								wx.redirectTo({
+									url
 								});
 							}
 						});
 					}
 				);
 			});
+	},
+	naviToMail: function(e) {
+		console.log(e);
+		var url = '../email/email?' + 'subId=' + this.data.subId;
+		wx.navigateTo({
+			url
+		});
 	},
 	/**
    * 生命周期函数--监听页面加载
@@ -265,6 +278,9 @@ Page({
 				success(res) {
 					var settings = res.data[id];
 					console.log(settings);
+					_this.setData({
+						subId: settings.subId
+					});
 					_this.setOptions(settings, () => {
 						_this.toUseSearch();
 					});

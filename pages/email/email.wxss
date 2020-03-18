@@ -62,10 +62,9 @@ page {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	padding: 30rpx;
 	height: 900rpx;
-	background-color: #fff;
-	border-radius: 20px 20px 0 0;
+	background-color: #f6f6f6;
+	border-radius: 5px 5px 0 0;
 }
 /*动画前初始位置*/
 .bottom-pos {
@@ -73,9 +72,45 @@ page {
 	transform: translateY(100%);
 }
 
-.add-title {
+.pop-right {
+	float: right;
+	color: #57bd6a;
+	padding: 15px;
+}
+.pop-left {
+	float: left;
+	color: #777777;
+	padding: 15px;
+}
+.float-title {
 	text-align: center;
-	font-size: 20px;
-	font-weight: 400;
-	padding-top: 20px;
+	font-size: 18px;
+	background-color: #fff;
+	border-bottom: 1px solid #e1e1e1;
+	padding: 15px 0 10px 0;
+	border-radius: 20px 20px 0 0;
+}
+
+.email-input {
+	height: 2.5em;
+	min-height: 2.5em;
+	line-height: 2.5em;
+}
+
+.add-button {
+	width: 40%;
+	height: 35px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 16px;
+	color: #fff;
+	background-color: #57bd6a;
+	border-radius: 2px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+}
+
+.add-button:active {
+	background-color: #4eaa5f;
 }

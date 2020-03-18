@@ -54,6 +54,14 @@
 	justify-content: flex-start;
 	align-items: baseline;
 }
+.delay-email {
+	margin: auto;
+	font-size: 13px;
+	background-color: #4d90fe;
+	color: #fff;
+	padding: 2px 8px;
+	border-radius: 2px;
+}
 
 .subscribe-keywords {
 	line-height: 27px;
