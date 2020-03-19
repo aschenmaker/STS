@@ -61,22 +61,30 @@
               </picker>
                 </view>
               <!-- 订阅邮箱 -->
-              <view hidden="{{!toEdited}}" class="picker-view" bindtap="naviToMail">
+              <!-- <view hidden="{{!toEdited}}" class="picker-view" bindtap="naviToMail">
                      <text class="delay-email">修改关联邮箱</text>
-              </view>
-            
+              </view> -->
+              <block wx:for="{{emailInputs}}" wx:key="index">
+                     <view class="picker-view">
+                            <text class="textPicker">订阅邮箱 {{index+1}}</text>
+                            <input id="{{item.id}}" type="text" placeholder="请输入邮箱" value="{{item.email}}" maxlength="1000" class="subscribe-emails" bindinput="bindinputEmails"/>
+                            <view hidden="{{!item.isAEmail}}" class="icon-style-done" bindtap="addEmailList"> <mp-icon type="field" icon="done" color="#59B22D" size="20"></mp-icon></view>
+                            <view hidden="{{emailInputs.length-1 != index || !item.isAEmail}}" class="icon-style" bindtap="addEmailList"> <mp-icon type="field" icon="add2" color="#888888" size="20"></mp-icon></view>
+                            <view id="{{index}}" hidden="{{!(emailInputs.length-1 != index || !item.isAEmail)||index==0}}" class="icon-style" bindtap="deleteEmailList"> <mp-icon type="field" icon="close2" color="#888888" size="20"></mp-icon></view>
+                     </view>
+              </block> 
        </view>
 
          
       <view class="creatButton">
-            <button wx:if="{{toEdited}}" class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="edit_subcribe" bindtap="createSubscibe" disabled="{{!options.searchkeyword}}">修改订阅</button>
-            <button wx:else class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" bindtap="createSubscibe" disabled="{{!options.searchkeyword}}" >创建订阅</button>
-            <button class="showbutton {{optionsIsShow?'hide':''}}" id="show_options" bindtap="showOptions" >显示选项 ▼</button>
-            <button class="showbutton {{optionsIsShow?'':'hide'}}" id="hide_options" bindtap="showOptions">隐藏选项 ▲</button>
+            <button wx:if="{{toEdited}}" class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="edit_subcribe" bindtap="createSubscibe" disabled="{{!options.searchkeyword || !emailInputs[emailInputs.length-1].isAEmail}}">修改订阅</button>
+            <button wx:else class="weui-btn subbutton"  hover-class="subbutton_hover" size="mini" id="create_subcribe" bindtap="createSubscibe" disabled="{{!options.searchkeyword || !emailInputs[emailInputs.length-1].isAEmail}}" >创建订阅</button>
+            <button hidden="{{toEdited}}" class="showbutton {{optionsIsShow?'hide':''}}" id="show_options" bindtap="showOptions" >显示选项 ▼</button>
+            <button hidden="{{toEdited}}" class="showbutton {{optionsIsShow?'':'hide'}}" id="hide_options" bindtap="showOptions">隐藏选项 ▲</button>
       </view>
 </view>
 </view>
-<view class="page-content">
+<view class="page-content" hidden="{{toEdited}}">
        <view class="page-title {{contentlist.length==0?'hide':''}}">搜索预览</view>
        <view class="content-list">
               <block wx:for-items="{{contentlist}}" wx:key="id">

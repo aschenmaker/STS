@@ -3,7 +3,7 @@ let resultTypeArr = [ 'PDF', 'Email', 'miniprogram' ];
 var settimevalue = 0;
 var thetime = [ '周一', '周二', '周三', '周四', '周五', '周六', '周日', '自动' ];
 
-const optionsToSever = function(settings, exc, UID) {
+const optionsToSever = function(settings, exc, UID, emails) {
 	if (settings.timeValue.length == 2) {
 		settimevalue =
 			thetime.findIndex((i) => {
@@ -25,7 +25,8 @@ const optionsToSever = function(settings, exc, UID) {
 		keyword: settings.keywords,
 		frequency: frequencyArr[settings.frequentIndex],
 		settime: settimevalue,
-		resultType: resultTypeArr[settings.subscribeModeIndex]
+		resultType: resultTypeArr[settings.subscribeModeIndex],
+		email: emails
 	};
 
 	return params;

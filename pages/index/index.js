@@ -226,9 +226,12 @@ Page({
 
 		console.log('查询json:-----', params);
 		api.post('/test?', params).then((res) => {
+			console.log(res);
 			console.log(res.SubcriptionID);
-			var options = res.SubcriptionID.map((item) => {
-				return (item = exchange.severToOptions(item));
+			var options = res.SubcriptionID.map((item, index) => {
+				item = exchange.severToOptions(item);
+				item.emails = res.emails[index];
+				return item;
 			});
 			console.log(options);
 			wx.setStorage({

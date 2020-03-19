@@ -2,6 +2,7 @@
 	"navigationBarBackgroundColor": "#4752b3",
 	"navigationBarTitleText": "  ",
 	"usingComponents": {
-		"mp-searchbar": "../../component/searchbar/searchbar"
+		"mp-searchbar": "../../component/searchbar/searchbar",
+		"mp-icon": "../../component/icon/icon"
 	}
 }
