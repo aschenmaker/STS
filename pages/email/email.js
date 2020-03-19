@@ -1,4 +1,3 @@
-// pages/email/email.js
 const api = require('../../utils/api.js');
 Page({
 	/**
