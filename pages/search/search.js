@@ -219,7 +219,9 @@ Page({
 	// 创建订阅按钮
 	createSubscibe: function(e) {
 		var that = this;
-		var emails = this.readEmail();
+		var emails = this.readEmail().map((item) => {
+			return { email: item };
+		});
 		console.log(e);
 		var settings = this.data.options;
 		settings.keywords = [];
