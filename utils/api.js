@@ -1,4 +1,4 @@
-const baseURL = 'https://some web site~';
+const baseURL = 'https://www.jareee.com';
 const http = ({ url = '', params = {}, ...other } = {}) => {
 	wx.showLoading({
 		title: '加载中...'
