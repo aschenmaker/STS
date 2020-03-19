@@ -219,16 +219,16 @@ Page({
 	// 创建订阅按钮
 	createSubscibe: function(e) {
 		var that = this;
-		var emails = this.readEmail().map((item) => {
-			return { email: item };
-		});
+		var emails = this.readEmail();
 		console.log(e);
 		var settings = this.data.options;
 		settings.keywords = [];
 		if (settings.subscibeKeywords.length != 0) {
 			settings.keywords = settings.subscibeKeywords.split(' ').filter((item) => item.length > 0);
 		}
-		settings.emails = emails;
+		settings.emails = emails.map((item) => {
+			return { email: item };
+		});
 		var arr = [];
 		arr.push(settings);
 		console.log(settings);
