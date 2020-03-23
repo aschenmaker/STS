@@ -39,7 +39,7 @@
         <view class="icon-mine"></view>
         <view class="text">邮箱管理</view>
     </view>
-    <view class="list-item">
+    <view class="list-item" bindtap="naviToLog">
         <view class="icon-mine"></view>
         <view class="text">日志</view>
     </view>
