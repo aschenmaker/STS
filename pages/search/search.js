@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
 	data: {
+		isOnSearching: false,
 		// 输入邮箱状态
 		emailInputs: [ { id: '0', email: '', isAEmail: false } ],
 		// 检查是否为修改订阅
@@ -80,19 +81,44 @@ Page({
 			emailInputs: list
 		});
 	},
+	// 使用关键词搜索;
+	searchByKeywords: function() {
+		console.log('--使用关键词进行搜搜--');
+		var mode = 'bykeywords';
+		this.toUseSearch(mode);
+	},
 	// 启动搜索
-	toUseSearch: function() {
-		let params = {
-			function: '1',
-			keyword: this.data.options.searchkeyword
-		};
+	toUseSearch: function(mode = 'default') {
+		console.log(mode);
+		let params = {};
+		if (mode == 'default') {
+			params = {
+				function: '1',
+				subject: this.data.options.searchkeyword,
+				keyword: []
+			};
+		} else {
+			var keywords = this.data.options.subscibeKeywords.split(' ').filter((v) => {
+				return v.length > 0;
+			});
+			params = {
+				function: '1',
+				subject: this.data.options.searchkeyword,
+				keyword: keywords
+			};
+		}
+		this.setData({
+			isOnSearching: true
+		});
 		console.log(params);
 		api
 			.post('/test?', params)
 			.then((res) => {
 				console.log(res);
+				res.map((v) => (v.score = v.score.toFixed(2)));
 				this.setData({
-					contentlist: res
+					contentlist: res,
+					isOnSearching: false
 				});
 			})
 			.catch((reason) => {
@@ -102,9 +128,17 @@ Page({
 					icon: 'none',
 					duration: 2000
 				});
+				this.setData({
+					isOnSearching: false
+				});
 			});
 	},
-
+	//绑定 searchbar 输入内容
+	searchbarContent: function(e) {
+		this.setOptions({
+			searchkeyword: e.detail.value
+		});
+	},
 	comfirmSearch: function(e) {
 		console.log(e.detail.value);
 		var _this = this;

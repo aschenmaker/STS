@@ -75,6 +75,7 @@
 	justify-items: center;
 	font-size: 12px;
 	color: #454545;
+	width: 150px;
 }
 .subscribe-emails {
 	line-height: 27px;
@@ -88,7 +89,7 @@
 	justify-items: center;
 	font-size: 12px;
 	color: #454545;
-	width: 160px;
+	width: 150px;
 }
 
 .icon-style {
@@ -144,6 +145,20 @@ picker {
 	background-color: #357ae8;
 }
 
+.searchbtn {
+	font-size: 12px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #4d90fe;
+	border-radius: 2px;
+	margin: auto 10px;
+	height: 27px;
+}
+
+.searchbtn_hover {
+	background-color: #357ae8;
+}
+
 .showbutton {
 	font-size: 12px;
 	font-weight: 400;
@@ -177,7 +192,7 @@ picker {
 }
 
 .page-content {
-	padding: 400rpx 25px 0 25px;
+	padding: 400rpx 0 0 0;
 }
 
 .page-title {
@@ -187,6 +202,11 @@ picker {
 	display: inline-block;
 	margin-top: 30px;
 	margin-bottom: 0;
+	padding: 0 16px;
+}
+
+.media-box {
+	background-color: #fff;
 }
 
 .content-list-item-news {
@@ -202,13 +222,9 @@ picker {
 }
 
 .content-list-tittle {
-	display: inline;
 	color: #404040;
 	font-size: 14px;
 	font-style: normal;
-	text-align: left;
-	clear: left;
-	text-overflow: ellipsis;
 }
 
 .content-list-author {
@@ -223,5 +239,5 @@ picker {
 	display: block;
 	font-size: 12px;
 	font-weight: 400;
-	line-height: 20px;
+	-webkit-line-clamp: 3;
 }

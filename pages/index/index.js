@@ -34,6 +34,7 @@ Page({
 					encryptedData,
 					iv
 				};
+				var wrongInfo = userInfo;
 				console.log(params);
 				console.log(callback);
 				api

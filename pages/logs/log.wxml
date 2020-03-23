@@ -8,7 +8,8 @@
       </view>
       <view class="margin-top-sm text-content">
         <view>1.支持关键词进行搜索预览</view>
-        <view>2.增加了更新日志页面</view>
+        <view>2.增加了更新 ·日志· 页面</view>
+        <view>3.重新布局优化了 `我的` `创建订阅` 界面</view>
       </view>
     </view>   
   </view>

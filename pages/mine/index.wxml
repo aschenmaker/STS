@@ -1,11 +1,11 @@
-<view class="user-block">
+<view class="user-block bg-gradual-green">
     <view class="user-avatar">
         <image class="png" mode="widthFix" src="{{avatarUrl}}"></image>   
     </view>
     <view class="user-id"> {{nickname}}</view>
     <image class="gif-wave" mode="scaleToFill" src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif"></image>
 </view>
-<view class="subscribe">
+<view class="subscribe shadow-warp">
     <view class="info-box">
         <view class="num-sub">{{subsciribedNumber}}</view>
         <view class="descirption">
@@ -33,25 +33,36 @@
             </view>
         </view>
     </view>
-</view>    
-<view class="setting-list">
-    <view class="list-item" bindtap="naviToMail">
-        <view class="icon-mine"></view>
-        <view class="text">邮箱管理</view>
+</view> 
+
+<view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius setting-list">
+    <view class="cu-item arrow" bindtap="naviToMail">
+        <view class="content">
+            <text class="cuIcon-mail text-green"></text>
+            <text class="text-grey">邮箱管理</text>
+        </view>
     </view>
-    <view class="list-item" bindtap="naviToLog">
-        <view class="icon-mine"></view>
-        <view class="text">日志</view>
+    <view class="cu-item arrow" bindtap="naviToLog">
+        <view class="content">
+            <text class="cuIcon-formfill text-blue"></text>
+            <text class="text-grey">更新日志</text>
+        </view>
     </view>
-    <view class="list-item">
-        <view class="icon-mine"></view>
-        <view class="text">意见反馈</view>
+    <view class="cu-item arrow">
+        <view class="content">
+            <text class="cuIcon-writefill text-orange"></text>
+            <text class="text-grey">意见反馈</text>
+        </view>
     </view>
-    <view class="list-item">
-        <view class="icon-mine"></view>
-        <view class="text">关于</view>
+    <view class="cu-item arrow">
+        <view class="content">
+            <text class="cuIcon-like text-red"></text>
+            <text class="text-grey">关于</text>
+        </view>
     </view>
 </view>
-<!-- <view class="weui-footer weui-footer_fixed-bottom">
-    <view class="weui-footer__text">Copyright © 2020 zjj cqs</view>
-</view> -->
+
+<view class="weui-footer weui-footer_fixed-bottom footer">
+    <view class="weui-footer__text footer-text">v0.1.5</view>
+    <view class="weui-footer__text footer-text">All Rights Reserved</view>
+</view>

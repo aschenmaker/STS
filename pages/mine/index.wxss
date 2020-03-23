@@ -1,10 +1,12 @@
 /* pages/about/index.wxss */
+@import '../../component/colorui-wxss/main.wxss';
+@import '../../component/colorui-wxss/icon.wxss';
 .page {
 	background-color: #f1f1f1;
 }
 .user-block {
-	background-color: #5fb442;
-	height: 450rpx;
+	/* background-color: #5fb442; */
+	height: 500rpx;
 	display: flex;
 	justify-content: center;
 	padding-top: 40rpx;
@@ -36,6 +38,7 @@ image {
 .user-id {
 	font-size: 36rpx;
 	margin-top: 5px;
+	font-weight: 300;
 }
 
 .gif-wave {
@@ -99,9 +102,6 @@ image {
 
 .setting-list {
 	margin-top: 50rpx;
-	padding: 0 30rpx;
-	border-radius: 20rpx;
-	box-sizing: border-box;
 }
 
 .list-item {
@@ -126,4 +126,13 @@ image {
 	content: '';
 	transform: scale(.5);
 	transform-origin: 0 0;
+}
+
+.footer {
+	position: fixed;
+	bottom: calc(10px + env(safe-area-inset-bottom));
+}
+
+.footer-text {
+	font-size: 11px;
 }
