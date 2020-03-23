@@ -1,0 +1,6 @@
+/* pages/logs/log.wxss */
+@import '../../component/colorui-wxss/main.wxss';
+@import '../../component/colorui-wxss/icon.wxss';
+page {
+	background-color: #fff;
+}

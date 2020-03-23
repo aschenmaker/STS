@@ -4,7 +4,8 @@
 		"pages/find/index",
 		"pages/mine/index",
 		"pages/email/email",
-		"pages/search/search"
+		"pages/search/search",
+		"pages/logs/log"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
