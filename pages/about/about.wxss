@@ -1,0 +1,2 @@
+/* pages/about/about.wxss */
+@import '../../component/colorui-wxss/main.wxss';

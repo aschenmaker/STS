@@ -1,9 +1,23 @@
 <!--pages/logs/log.wxml-->
 <view class="cu-timeline">
+ <view class="cu-item text-green">
+    <view class="bg-gradual-green content shadow">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-white text-green">v0.1.6 alpha</view>
+        <view class="cu-tag line-white">2020/3/30</view>
+      </view>
+      <view class="margin-top-sm text-content">
+        <view>1.支持通过PDF结果的订阅</view>
+        <view>2.修改搜索界面</view>
+        <view>3.增加了 ·关于· 页面</view>
+      </view>
+    </view>   
+  </view>
+
   <view class="cu-item text-green">
     <view class="bg-gradual-green content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-green">v0.1.5</view>
+        <view class="cu-tag bg-white text-green">v0.1.5 alpha</view>
         <view class="cu-tag line-white">2020/3/23</view>
       </view>
       <view class="margin-top-sm text-content">
@@ -17,7 +31,7 @@
   <view class="cu-item text-green">
     <view class="bg-gradual-green content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-green">v0.1.4</view>
+        <view class="cu-tag bg-white text-green">v0.1.4 alpha</view>
         <view class="cu-tag line-white">2020/3/19</view>
       </view>
       <view class="margin-top-sm text-content">
@@ -30,7 +44,7 @@
   <view class="cu-item text-green">
     <view class="bg-gradual-green content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-green">v0.1.3</view>
+        <view class="cu-tag bg-white text-green">v0.1.3 alpha</view>
         <view class="cu-tag line-white">2020/3/15</view>
       </view>
       <view class="margin-top-sm text-content">
@@ -44,7 +58,7 @@
   <view class="cu-item text-green">
     <view class="bg-gradual-green content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-green">v0.1.2</view>
+        <view class="cu-tag bg-white text-green">v0.1.2 alpha</view>
         <view class="cu-tag line-white">2020/3/12</view>
       </view>
       <view class="margin-top-sm text-content">
@@ -57,7 +71,7 @@
   <view class="cu-item text-green">
     <view class="bg-gradual-green content shadow">
       <view class="cu-capsule radius">
-        <view class="cu-tag bg-white text-green">v0.1.1</view>
+        <view class="cu-tag bg-white text-green">v0.1.1 alpha</view>
         <view class="cu-tag line-white">2020/3/1</view>
       </view>
       <view class="margin-top-sm text-content">

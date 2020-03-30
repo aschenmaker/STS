@@ -5,10 +5,10 @@
        <view class="desc">即刻订阅你想搜索的内容</view>
  </view> 
  <view class="search-bar" wx:if="{{toEdited}}" >
-       <mp-searchbar placeholder="创建你的搜索订阅吧" cancel="{{false}}" focus="{{true}}" borderColor="#4752b3" value='{{options.searchkeyword}}' searchbarText="创建你的搜索订阅吧"  bindconfirm="comfirmSearch" >    </mp-searchbar>
+       <mp-searchbar placeholder="请输入你要搜索的关键词" cancel="{{false}}" focus="{{true}}" borderColor="#4752b3" value='{{options.searchkeyword}}' searchbarText="请输入你要搜索的关键词"  bindconfirm="comfirmSearch" >    </mp-searchbar>
  </view>
  <view class="search-bar" wx:else>
-       <mp-searchbar placeholder="创建你的搜索订阅吧" borderColor="#4752b3" ext-class="{{searchbarstyle}}" searchbarText="创建你的搜索订阅吧" bindinput="searchbarContent" bindconfirm="comfirmSearch">    </mp-searchbar>
+       <mp-searchbar placeholder="请输入你要搜索的关键词" borderColor="#4752b3" ext-class="{{searchbarstyle}}" searchbarText="请输入你要搜索的关键词" bindinput="searchbarContent" bindconfirm="comfirmSearch">    </mp-searchbar>
 </view>
 <view class="section">
       <view class="options">
@@ -17,7 +17,7 @@
       <view class="create-subcribe-options {{optionsIsShow?'options-show':''}}">
               <!-- 关键词： -->
               <view class="picker-view">
-                     <text class="textPicker">以关键词订阅</text>
+                     <text class="textPicker">关键词</text>
                      <input type="text" placeholder="请输入关键词，以空格分隔" value="{{options.subscibeKeywords}}" maxlength="40" class="subscribe-keywords" bindinput="bindinputKeywords"/>
                      <button class="searchbtn"  hover-class="searchbtn_hover"  id="search-keyword" bindtap="searchByKeywords" disabled="{{!options.subscibeKeywords.length>0||isOnSearching}}">搜索</button>
               </view>

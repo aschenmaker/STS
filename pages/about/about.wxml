@@ -1,0 +1,11 @@
+
+<view class='margin-xl bg-white padding-xl radius shadow-lg'>
+  <view class='text-center margin-bottom text-lg  text-grey'>关于订阅搜索小程序</view>
+  <view class='text-content'>
+    <view>Hi！~ 欢迎使用 Magic Search 订阅搜索</view>
+    <view class='margin-top-sm'>本项目旨在于实现对搜索内容的自动化跟踪，于内容更新检测，当搜索引擎出现了你订阅的内容时，会将新内容根据你的设置推送到你的邮箱中。</view>
+    <view class='margin-top-sm'>本项目会保护你的隐私以及搜索的内容，你可以放心的进行使用。</view>
+    <view class='margin-top-sm'>初期的搜索速度可能并不理想，但我们会持续进行搜索速度优化。并对推送结果进行的精准度进行优化。感谢你参与到我们的测试过程中来。</view>
+    <view class='margin-top-sm'>更多功能敬请期待！</view>
+  </view>
+</view>

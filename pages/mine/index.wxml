@@ -54,9 +54,9 @@
             <text class="text-grey">意见反馈</text>
         </view>
     </view>
-    <view class="cu-item arrow">
+    <view class="cu-item arrow" bindtap="naviToAbout">
         <view class="content">
-            <text class="cuIcon-like text-red"></text>
+            <text class="cuIcon-like text-red" ></text>
             <text class="text-grey">关于</text>
         </view>
     </view>

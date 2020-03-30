@@ -1,34 +1,35 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/find/index",
-		"pages/mine/index",
-		"pages/email/email",
-		"pages/search/search",
-		"pages/logs/log"
-	],
-	"window": {
-		"backgroundTextStyle": "light",
-		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTitleText": "订阅搜索",
-		"navigationBarTextStyle": "black"
-	},
-	"tabBar": {
-		"color": "#bfbfbf",
-		"list": [
-			{
-				"pagePath": "pages/index/index",
-				"text": "主页",
-				"iconPath": "/asset/img/home.png",
-				"selectedIconPath": "/asset/img/homeSelected.png"
-			},
-			{
-				"pagePath": "pages/mine/index",
-				"text": "我",
-				"iconPath": "/asset/img/mine.png",
-				"selectedIconPath": "/asset/img/mineSelected.png"
-			}
-		]
-	},
-	"sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/index/index",
+    "pages/find/index",
+    "pages/mine/index",
+    "pages/email/email",
+    "pages/search/search",
+    "pages/logs/log",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "订阅搜索",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "/asset/img/home.png",
+        "selectedIconPath": "/asset/img/homeSelected.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我",
+        "iconPath": "/asset/img/mine.png",
+        "selectedIconPath": "/asset/img/mineSelected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
 }
