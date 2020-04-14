@@ -10,6 +10,7 @@
         <view>1.支持通过PDF结果的订阅</view>
         <view>2.修改搜索界面</view>
         <view>3.增加了 ·关于· 页面</view>
+        <view>4.修改了搜索同一关键词不能直接显示的bug</view>
       </view>
     </view>   
   </view>

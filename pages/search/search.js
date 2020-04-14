@@ -304,7 +304,7 @@ Page({
 								var sameIndex = 0;
 								var isE = res.data.some((value, index) => {
 									sameIndex = index;
-									return value.searchkeyword == settings.searchkeyword;
+									return value.subId == settings.subId;
 								});
 								console.log(isE, sameIndex);
 
